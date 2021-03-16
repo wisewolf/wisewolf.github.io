@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Encryptinator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <script src="sjcl.js"></script>
+    <center>
+        <h1>Encryptinator</h1>
+    </center>
+    <p>Password: <input type="text" id="password" name="password" /></p>
+    <p>Message: <textarea id="msg" name="message"></textarea></p>
+    <button class="button" onclick=encryptinate()>Encryptinate</button>
+    <p id="enc_msg"></p>
+
+    <script>
+        function encryptinate() {
+            var key = document.getElementById('password').value.toLowerCase().replace(/\s*$/, "");
+            var text = document.getElementById('msg').value;
+            var encrypted = JSON.parse(sjcl.encrypt(key, text));
+            document.getElementById('enc_msg').innerHTML = encrypted.iv + encrypted.salt + encrypted.ct;
+        }
+    </script>
+</body>
+
+</html>

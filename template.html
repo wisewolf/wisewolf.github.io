@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Decryptinator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- biblioteca -->
+    <script src="sjcl.js"></script>
+
+    <!-- formulario -->
+    <p>Insert Text Here</p>
+    <div class="formContainer">
+        <form class="form-horizontal" role="form" id="decryptorForm">
+            <input type="text" class="form-control" placeholder="key (password)" id="input-key"></p>
+            <button class="button" id="decryptorButton" type="submit">Decrypt</button>
+        </form>
+    </div>
+
+    <!-- INTERAÇÕES  -->
+    <script type="text/javascript">
+        function Resolve() {
+            var key = document.getElementById('input-key').value.toLowerCase().replace(/\s*$/, "");
+            // don't and don't
+            key = key.replace(/\'/g, "'")
+                // VAMOS BUSCAR OS VALORES A INSERIR NA CIFRA AO HTML, ATRAVÉS DAS SPAN
+            var data = document.getElementsByClassName('decrypt')
+            for (var i = 0; i < data.length; i++) {
+                var adata = '{ "iv":"' + data[i].childNodes[0].innerHTML + '","v":1,"iter":10000,"ks":128,"ts":64,"mode":"ccm","adata":"","cipher":"aes","salt":"' + data[i].childNodes[1].innerHTML + '","ct": "' + data[i].childNodes[2].innerHTML + '"}'
+                try {
+                    var plaintext = sjcl.decrypt(key, adata)
+                    data[i].innerHTML = plaintext
+                    data[i].classList.add('solved');
+                    data[i].classList.remove('decrypt');
+                } catch (e) {}
+            }
+        };
+    </script>
+    <script>
+        // SUBMETER E TENTAR RESOLVER O PUZZLE
+        var form = document.getElementById("decryptorForm");
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            Resolve();
+        });
+    </script>
+    <style>
+        .decrypt {
+            word-wrap: break-word;
+        }
+    </style>
+    <p>
+        <div class="text decrypt"><span>eZdbKw+zyRNkpSFKhElrJw==</span><span>hXYkMMP015E=</span><span>IKXTc181qrdpeVcRy7Y1iQodimTUayz7UdeuxcR4wdZ09ZJGPOIoT8Ris8c3fgyWOTP1RtQZ6vjx2jAvFzOIYgbkUBu7X4F4J7qHvPC7PuBGqCHSHBk3ClMcE1ZLctgOFgkioXNAz0N+AUaN867slQVJteqAmk7ZPPX4uII/oBD07S5uuIIKOofeT+DYxRYIX2VafGaeqOq2VBEwwxeaY05aGWwLX8GrdwG3SvOdMJOzODiIzHsavexaCK2Bf6D9LL0Q7htQN5vL2ovtgqg2NURMdSFT8NdcBXSAOFOiC4f0csaU4bQvSNuA5IVd4oWCHTPbIy3yldTeyKAjdCTyPPfSrD/IkByDTl5J3en38hl7nvsQAooZ7DKQctoB4SC933zz/d7tXcY9+T0zK+0lIGxzVyUQt9gC6IDJQcYP5W7zro+xKTZYEvyZzlU0eOo0eGlZEngsSAjDOwAJAcZ2zP/a0kNdi2S88cRw7qNR6+Sipm5dy2nWD3fqBGUCMoT2+Qh7mnoMfHqoeB+rOuiDG/w05518+sfUxI2bi/CjMYnyuP6XEit/9EnU/3e+DAL6zFiIee8brJCB6F37b5J7NUMzZ/oBzBpJaYL6+C9858Fk9U5nvIa+jBpcGVkG0b+hT0dmZDPxWuBdoq5cxIfa4q5QmRjxgu9xSgpEk90g12ae1Dn4rZgrF2JGmfu1lbaZj2EPE8tCGjZWew/4Xf0oHUMKs7/kGwaKNk8WgXvlV2CaUp/Ka4iBV8cXE0LlmEtv/1myXgSpC9E68sAbCr502DSVf9PDl8SxsHC3a0X6JaoN30XVW604U1PSrAQ8ytbjEkdGPej4zhmQMkSz9D3YpItdf23dWZu+xOM7xbsbIDwVoeAp5itNrPQpiiFl0hMRNS/2gYvHVOz3+uic/bgxQJRMoDAu3hRHFitYdbcU1q1Cf8p1mNxg6YgsGXj2uAmUIB2OEQpfgPRw9TqK5wXn+/whTTEf0gm8aSHWr58KadVcK1QYYewYKbM2zGk9+LExp2L57tlWpZjmk0Bd4ZjOlR3FhaxRZAu5j1PywEsGt4L1VSVupBELbUeH/nP7k+CNV0R5LWbtY81+06dM7obuNd5M1NeNqSBtq5C1/BisGQkO/AGey3/xcyK8/GpzuHimmD+OWIXluewVlXaDYDDzUp3H0T8BSbXYpkIGlmucUmJr5BADS7jvoGB7KU8VusXU/vAmyVcioWODHB2wsmRGERbJ7lq78BWWkWwKgVG52BSz8yZ3Fd+1jMFaO3GHF30wdfOBlKTMyc+ApKiCi2kmbdggTxb8pmj70chNV3LeBjpFbzdyLQ48iaUqYqO6O5VG9nDlh2XmVO+Z4rReEvyi4LM7aw/YFtHTqoyLkkyl/sMy/SGnWAxm/yF0LHcCMZf1oeTBAGCBXuAQgwOskb930IuHkUJ4EipzDSRk7SAg0NGtVUw0+x9tWNvlty9l/tjnJae0srUKlyrQYcxi/QwNpHtJk/lU3fOuY+7CpHO3THOq1/w2boqrGhhVoa77hD76U5vUc/Jkc2cROJCWJ7Q6hp89zKUzFHX2nNJtcHsOVOYAzNAOUhPtC6HcFq3fr/Qlgsg7GuhXUVTWo/OxCA7Wihhy5ZQDUwe+sqtpsFVRgLv384gh04OEX8OEp+lNKCQXEK0uHwPoIWW8XJIXNcpa78oR45FyORponU6dPqLYKI2/WbhW1ypEAjziwmwYYSxpJfhwRFtNxBWddFua2V6UQjQVNlGq+hwEHrjnxJ3WWtpuEXFEaq+5CDY=</span>
+        </div>
+    </p>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Decryptinator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <script src="sjcl.js"></script>
+    <center>
+        <h1>Decryptinator</h1>
+    </center>
+    <p>key: <input type="text" id="key" name="key" /></p>
+    <p>encrypted: <textarea id="secret" name="secret"></textarea></p>
+    <button class="button" onclick=decryptinate()>Decryptinate</button>
+    <p id="dec_msg"></p>
+
+    <script>
+        function decryptinate() {
+            var key = document.getElementById('key').value.toLowerCase().replace(/\s*$/, "");
+            var iv = document.getElementById('secret').value.substr(0, 24);
+            var salt = document.getElementById('secret').value.substr(24, 12);
+            var ct = document.getElementById('secret').value.substr(36, document.getElementById('secret').value.length);
+            var encrypted = '{ "iv":"' + iv + '","v":1,"iter":10000,"ks":128,"ts":64,"mode":"ccm","adata":"","cipher":"aes","salt":"' + salt + '","ct": "' + ct + '"}'
+            document.getElementById('dec_msg').innerHTML = sjcl.decrypt(key, encrypted);
+        }
+    </script>
+
+</body>
+
+</html>
