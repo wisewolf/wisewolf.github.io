@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>index on HUGO.386</title>
-    <link>https://wisewolf.github.io/tags/index/</link>
-    <description>Recent content in index on HUGO.386</description>
+    <title>Start on HUGO.386</title>
+    <link>https://wisewolf.github.io/post/</link>
+    <description>Recent content in Start on HUGO.386</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="https://wisewolf.github.io/tags/index/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language><atom:link href="https://wisewolf.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Aposentos do Manfred</title>
       <link>https://wisewolf.github.io/post/quarto2/</link>
@@ -64,18 +64,6 @@ Chegados ao destino, correm em direção ao armazém e está vazio, não se vê 
       <description>Para concluir a vossa aventura, os guias devem publicar no whatsapp dos Guias e Subguias o seguinte:
 Nelson Mandela: Um escuteiro nunca é apanhado de surpresa; ele sabe exatamente o que fazer quando algo inesperado acontece. Vasco da Gama: Um escuteiro sorri e assobia em todas as circunstâncias.
 Boa Caça!</description>
-    </item>
-    
-    <item>
-      <title>Start</title>
-      <link>https://wisewolf.github.io/post/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wisewolf.github.io/post/</guid>
-      <description>Acordas com o alarme do comunicador!
-A primeira coisa que te passa pela cabeça é que isto não é bom sinal.
-Nem 3 horas tinhas dormido depois de um sol[1] cheio de trabalho na colónia marciana Ichtus.
-Rogas umas pragas pelas escolhas que fizeste na tua vida, ninguém te obrigou a dedicares a tua vida à arqueologia alienígena, a vida cheia de aventuras e glamour retratada nos 4 documentários antigos do Indiana Jones não retratam a tua vida atual… vendo bem, já passaram mais de 200 anos desde a sua realização e começas a desconfiar que se calhar aquilo era ficção.</description>
     </item>
     
   </channel>
