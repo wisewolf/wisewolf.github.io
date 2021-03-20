@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Estação Espacial Baden Powell</title>
+</head>
+
+<body>
+   <p id="texto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel nulla non mi dapibus egestas. Nam sollicitudin lacus vel faucibus consequat. Praesent tristique ipsum vulputate, posuere dui ut, condimentum leo. Mauris tincidunt enim neque, ut scelerisque dolor suscipit at. Nam sed arcu elementum, eleifend justo eu, mattis nisl. Pellentesque urna risus, iaculis vel augue quis, mattis malesuada enim. Integer tristique purus eu risus eleifend dictum non sit amet sapien. Suspendisse mattis erat non elit fringilla tempus. Nullam lobortis urna sit amet leo auctor vulputate. Mauris blandit venenatis tempor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc tempor nunc mauris, at consectetur         arcu rhoncus fermentum. Donec sit amet leo in turpis varius dictum. Curabitur tortor sapien, maximus sit amet sem ut, sollicitudin elementum velit. Curabitur facilisis facilisis elit, et dignissim lectus. Sed malesuada in nisl nec molestie. </p>
+
+    <script src="sjcl.js"></script>
+    <p>Palavra Chave: <input type="text" id="key" name="key" /> <button class="button" onclick=decryptinate()>Desencriptar</button></p>
+    <p id="dec_msg"></p>
+    <p id="secret"></p>
+
+    <script>
+        var secret = "+PzJBrm5LbqwmdEkr94oZA==mPWHPsk6ppI=TNcnlPdsYDzK8ggRByzinOdtNqvFH+xpV0t7RHXsYQwpFu06u30T2YzjVHrETEWD4lTYVxS5OBdNWpj8Elw+DCi1SN0eV3KfVnsUAyxA/BumtkJkUbfNQgzSgV/J3Vflz8cVHdMt9cAcemLNbGV4r35FE6hkg2KTbPiO6uw/Mj4F5kjUnURSwcKai+aWklKL7m9UeZ0W1NzMWaiH9ViYQI/upWVzV3W4UGc8qWd60hjUZFaXPVXd4C3uDRHPie/v2LHAFb1EJsJg8rt7KqfWgukjhlt/FrAbZ3ulCWUHpIrV28dcCZCBMhXh6ZPoDknykyH92rKioNPIdW1SCGRoO67t4A+O4KpiOkZ2knjNYuWGXTUeFpoziHbUsE5o35AxMJWY0nVeNIFtNHSRM4LwID7StHBnpS93xurqazMVeSi29Sgb0YbSXhQmwU4Uf6Ilt5KySHzjQ6X+IwLJCWIoePBcZiIKMnqR6CyM8t2g9+DEZbjc7utTk09QZu21ylAc279mS+64BgyXBcT254lbwN/px2HL0mDa7M/5uRqkfc1SeJQtpceKuGe1zWSHjbJAD+4pbOF83O3m3hwwYfJQ+9YVVV1kye3YmHCt6s8IofM2OjvaxY8BPXVOtVMRppsRVhjbBMFGLC2tqslkDs1RnzIOM1KlzjPQ7cW7hn0gPn266JCsLCYLkdQd2TjNbD+Bv3Ghwrnx5/Hw98WlbwPtcegCgUnaOm1nLX2uU9ZAswQCm6Y7VoNi5gp3Rya3ho0kKgbfHvAFGLKBUr3lHC4u0udUJAUe7g4NkRA8nX7OiqeHBV3xYhGlosvFjARbbrZ6WJI7fR+5q9/jymeHMmugBncNUKc6CGUz4Cpt654t7QFedRPlU/UEP7jrOR3UMkOY1CofNt+b2c8NgVvQFSqBM5So2f9TQewr4CEukYx8sf9jvaLNciFCs/Q8r+oG2knZTllAW+hau6gJoOScR7vvuws96LI1jUV/mGOz49YTh7/4CqXlDl/+Z6dUeBru/tZPs8utdZXSgjlMbCAlwsWp4hWFc58yX1XTEQJVrIZDRi7tu1Piyl3UzMT1OiQEfWytZJfslfiWw57Y1DMVUK0x4jv9aU4bv9Sud4N9zQnVTIP/b05wutOYtOXSxCOLEzO+qepdJ/kqTA4bpKaTO5BtqmlzKao3UATQpMOKe2fnN0piIEvo8XtHd6y06HgZbdvC9ni3vutzZjWxaznKpV0Ofi6BPQ2vB2LZW3znFnyFjAgtg/DgE0Gent4+krb7/KcexHiAjZXrOb4Iv6+CY0Pf10YQDxlDvO0RIMJ6YR0fCLV7liTkdzfvl2Cfh+Z4A/xJQQlDSMuRTRCVmR9j7GzCMOKrtEq+HBHgkcByr4Jp8C07zRhN/iW4gZDf21a6uz5NCbuBO48Oj8PakkxOfz9fiGyI8EdSGrDY1HemUYcpHfNshAgzMAsCGvQ+86MkoAkbSm/I0xbwfvSlZvtVDeADV0soVleXjUem97DtNXr/jpnjI1sTKHr7uZgkoHBpTeIpPBn+DHqCy+mtluDpQF/27gkO0t2h4ril5QtIznN4lBeKkWhPWYq6L9AYBDhY7Z53pdSCkpfBRXU+IZw+F/yUA/Xhe0uJQyZyLn0b6Xyuxhr1hQ==";
+        document.getElementById('secret').innerHTML = secret;
+
+        function decryptinate() {
+            var key = document.getElementById('key').value.toLowerCase().replace(/\s*$/, "");
+            var iv = secret.substr(0, 24);
+            var salt = secret.substr(24, 12);
+            var ct = secret.substr(36, secret.length);
+            var encrypted = '{ "iv":"' + iv + '","v":1,"iter":10000,"ks":128,"ts":64,"mode":"ccm","adata":"","cipher":"aes","salt":"' + salt + '","ct": "' + ct + '"}'
+            document.getElementById('dec_msg').innerHTML = sjcl.decrypt(key, encrypted);
+            document.getElementById('secret').innerHTML = "";
+        }
+    </script>
+
+</body>
+
+</html>
