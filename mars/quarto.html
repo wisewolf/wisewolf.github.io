@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <title>Aposentos do Manfred Macx</title>
+</head>
+
+<body>
+    <div id="text" style="display: show;">
+        <p>
+            Vocês chegam aos aposentos e a Vanessa abre a porta e são cumprimentados pelo gato do Manfred, reparas na etiqueta da coleira, tinha gravado アイネコ. Iniciam as buscas, começas pelo computador, mas está protegido por uma senha. O teu gosto por puzzles e
+            desafios vem ao de cima e procuras por pistas e experimentas a tua sorte.</p>
+
+        <script src="sjcl.js"></script>
+        <p>Utilizador: Manfred Macx</p>
+        <p>Palavra Chave: <input type="text" id="key" name="key" /> <button class="button" onclick=decryptinate()>Login</button></p>
+    </div>
+    <p id="dec_msg"></p>
+    <p id="secret" style="display: none;">7gLCXY7WOJElq8aAwdvNNA==3w57JyLBZsY=SMq8QDU0RmI6/2ukCx/85QcH5bqO8sRy/wQiJad6namqwAINtRfBl5NUa9+nyPvAGuHVVT56XzmiGetF7JzQGqXf5jsqb4cetSJYXJ7GBmb6M98ONJ/VBRpKehB+0N5wbhlrPownfuD+WZwBy2Rho4WVFwWLzSxdcvkgBoXLdXcqsXsgARJIHZTO+oLQFqlldJYy72g3/ohaKkYVho7lwANQxMSWRNDYMJliA40XZlTq1HzdoCfoWVH1I/dgkUXSj8JrH5xF3o5R9RtvSEZVURmLt/GqsncGr0lrbINc/IKl7JpW6TzPo+MTJ8ErZ49UIpIXqbL7/4aEtt/XDPFPU84S/a6olXLu5Bnrpes/ZaGZB6n6xa6v3ExodYo+kWTFifAirloXz4bchGIWzXiNCHTRO+2J25+ED9BmdSlQRpLI+aCcs0figt/tYJQTxwnQR5EIfKK3+va0IpzxVc8DXsnBEtVxOsdsj82z5344ye1rDoYN8Evohw==</p>
+    <script>
+        var secret = document.getElementById('secret').innerHTML;
+
+        function decryptinate() {
+            var key = document.getElementById('key').value.toLowerCase().replace(/\s*$/, "");
+            var iv = secret.substr(0, 24);
+            var salt = secret.substr(24, 12);
+            var ct = secret.substr(36, secret.length);
+            var encrypted = '{ "iv":"' + iv + '","v":1,"iter":10000,"ks":128,"ts":64,"mode":"ccm","adata":"","cipher":"aes","salt":"' + salt + '","ct": "' + ct + '"}'
+            document.getElementById('secret').innerHTML = sjcl.decrypt(key, encrypted);
+            document.getElementById('secret').style.display = "block"
+            document.getElementById('text').style.display = "none"
+        }
+    </script>
+</body>
+
+</html>
